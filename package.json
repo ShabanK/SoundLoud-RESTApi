@@ -1,0 +1,9 @@
+{
+  "name": "Soundloud",
+  "version": "1.0.0",
+  "description": "A SoundCloud clone made with React, Nodejs(Expressjs) and MongoDB (Atlas for cloud)",
+  "main": "server.js",
+  "repository": "https://github.com/ShabanK/SoundLoud.git",
+  "author": "<shabankhawar99@gmail.com>",
+  "license": "MIT"
+}
