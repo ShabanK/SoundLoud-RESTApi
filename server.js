@@ -2,11 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const authRoutes = require("./routes/auth-routes");
 const song = require("./routes/songs/song");
+
 const app = express();
 
-app.use(cors);
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
 
 const db = mongoose
   .connect(process.env.MONGO_URI, {
@@ -17,7 +19,12 @@ const db = mongoose
     console.log("Connected to database");
   });
 
+app.use("/auth", authRoutes);
 app.use("/songs", song);
+
+app.get("/", (req, res) => {
+  res.send("you are here");
+});
 
 app.listen(5000, () => {
   console.log("Server is live");
