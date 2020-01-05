@@ -1,8 +1,9 @@
+const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
-const path = require("path");
 const User = require("../models/userSchema");
+const mongoose = require("mongoose");
 
 passport.use(
   new GoogleStrategy(
@@ -13,10 +14,17 @@ passport.use(
       clientSecret: process.env.clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-      new User({ username: profile.displayName, googleId: profile.id }).then();
-      console.log("PASS PORT CALL BACK!");
-      done();
+      User.findOne({ googleId: profile.id }).then(currentUser => {
+        if (currentUser) {
+          console.log(`user is ${currentUser}`);
+        } else {
+          new User({ username: profile.displayName, googleId: profile.id })
+            .save()
+            .then(newUser => {
+              console.log(newUser);
+            });
+        }
+      });
     }
   )
 );
