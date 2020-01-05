@@ -1,9 +1,12 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-require("dotenv").config();
+mongoose.Promise = global.Promise;
 const authRoutes = require("./routes/auth-routes");
 const song = require("./routes/songs/song");
+const passportSetup = require("./config/passportauth");
 
 const app = express();
 
