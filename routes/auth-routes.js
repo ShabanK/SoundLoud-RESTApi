@@ -1,19 +1,19 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-router.get("/", (req, res) => {
-  res.send("you are here login");
-});
+// router.get("/", (req, res) => {
+//   res.send("you are here login");
+// });
 
-//login route
-router.get("/login", (req, res) => {
-  res.send("IM HERE NOW!!!");
-});
+// //login route
+// router.get("/login", (req, res) => {
+//   res.send("IM HERE NOW!!!");
+// });
 
-// sign up route
-router.get("/signup", (req, res) => {
-  res.send("IM DOING THE BEST I CANNN");
-});
+// // sign up route
+// router.get("/signup", (req, res) => {
+//   res.send("IM DOING THE BEST I CANNN");
+// });
 
 // auth with google
 router.get(
@@ -25,7 +25,7 @@ router.get(
 
 //callback route for google to redirect to
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-  res.redirect("/home");
+  res.redirect("http://localhost:5000/home");
 });
 
 //sign out

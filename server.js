@@ -10,10 +10,11 @@ const home = require("./routes/home");
 const passport = require("passport");
 const passportSetup = require("./config/passportauth");
 const cookieSession = require("cookie-session");
-
+const postauth = require("./routes/postauth");
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 app.use(
   cookieSession({
@@ -38,6 +39,7 @@ const db = mongoose
 app.use("/auth", authRoutes);
 app.use("/songs", song);
 app.use("/home", home);
+app.use("/postauth", postauth);
 
 app.get("/", (req, res) => {
   res.send("you are here");

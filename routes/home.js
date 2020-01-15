@@ -9,7 +9,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", authCheck, (req, res) => {
-  res.json(req.user);
+  res.redirect("http://localhost:3000/home");
 });
 
 module.exports = router;
