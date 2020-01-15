@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 const authRoutes = require("./routes/auth-routes");
 const song = require("./routes/songs/song");
+const home = require("./routes/home");
 const passport = require("passport");
 const passportSetup = require("./config/passportauth");
 const cookieSession = require("cookie-session");
@@ -36,6 +37,7 @@ const db = mongoose
 
 app.use("/auth", authRoutes);
 app.use("/songs", song);
+app.use("/home", home);
 
 app.get("/", (req, res) => {
   res.send("you are here");
