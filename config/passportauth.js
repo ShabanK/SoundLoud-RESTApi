@@ -1,7 +1,7 @@
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth2").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const User = require("../models/userSchema");
 
 passport.serializeUser((user, done) => {
