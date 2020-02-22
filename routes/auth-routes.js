@@ -26,12 +26,13 @@ router.get(
 
 //callback route for google to redirect to
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-  res.redirect("http://localhost:5000/home");
+  res.redirect("http://localhost:3000/home");
 });
 
 //sign out
 router.get("/logout", (req, res) => {
-  res.send("ARE YOU NOW??!?!?!?!??!?!");
+  req.logout();
+  res.redirect("http://localhost:3000");
 });
 
 module.exports = router;
