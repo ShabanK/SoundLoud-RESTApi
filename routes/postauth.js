@@ -4,7 +4,7 @@ const userModel = require("../models/userSchema");
 // get current user data.
 router.get("/", (req, res) => {
   if (!req.user) {
-    res.send("nothing to see here boss");
+    res.redirect("http://localhost:3000");
   } else {
     res.send(req.user);
   }
