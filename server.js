@@ -6,11 +6,11 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 const authRoutes = require("./routes/auth-routes");
 const song = require("./routes/songs/song");
-const home = require("./routes/home");
 const passport = require("passport");
 const passportSetup = require("./config/passportauth");
 const cookieSession = require("cookie-session");
 const postauth = require("./routes/postauth");
+const postauth2 = require("./routes/postauth2");
 const app = express();
 
 // Add headers
@@ -27,12 +27,12 @@ app.use(function(req, res, next) {
   // Request headers you wish to allow
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept , credentials"
+    "Origin, X-Requested-With, Content-Type, Accept, credentials"
   );
 
   res.setHeader(
     "Access-Control-Request-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept ,credentials"
+    "Origin, X-Requested-With, Content-Type, Accept, credentials"
   );
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
@@ -65,8 +65,8 @@ const db = mongoose
 
 app.use("/auth", authRoutes);
 app.use("/songs", song);
-app.use("/home", home);
 app.use("/postauth", postauth);
+app.use("/postauth2", postauth2);
 
 app.get("/", (req, res) => {
   res.send("you are here");
